@@ -9,7 +9,9 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sum(a, b) { //eslint-disable-line
-
+    const resultado = a + b;
+    let message= "The sum of " + a + " and "+ b +" is " + resultado + "."
+    return [resultado,message];
 }
 
 // Here is the test for sum(); uncomment it to run it
@@ -70,17 +72,10 @@ Test this function by hand in the console to get it working, and when you think 
 let testArray = [2, 3, 4,]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
-    let Suma = 0;
-    // let Numbers = "";
+    let Suma = 0
     for (let i = 0; i < sumArr.length; i++) {
-        // same as sumaAr = sumaAr + sumArr
-        Suma += sumArr[i];;
-        // Numbers += sumArr[i];
-        // como agrego las comas?
-        // if (i < sumArr.length) {
-        //   Numbers += ",";
-        // };
-        // no funciona*
+        const resultado = sum(Suma,sumArr[i]);
+        Suma = resultado[0]
     }
     let msgAr = sumArr[0]+","+sumArr[1]+","+sumArr[2] + " was passed in as an array of numbers, and "+ Suma +" is their sum.";
     return[Suma,msgAr]
