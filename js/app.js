@@ -10,7 +10,7 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function sum(a, b) { //eslint-disable-line
     const resultado = a + b;
-    let message= "The sum of " + a + " and "+ b +" is " + resultado + "."
+    let message= `The sum of ${a} and ${b} is ${resultado}.`
     return [resultado,message];
 }
 
@@ -30,7 +30,7 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function multiply(a, b) { //eslint-disable-line
     const product = a * b
-    let msj = "The product of " + a + " and " + b + " is " + product +"."
+    let msj = `The product of ${a} and ${b} is ${product}.`
     return[product,msj] 
 }
 
@@ -52,11 +52,14 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-    const sum = a + b + c;
-    const product = a * b * c;
-    const msg1 = a + " and " + b + " and " + c + " sum to " + sum + ".";
-    const msg2 = "The product of " + a + " and " + b + " and " + c + " is " + product + ".";
-    return[sum,product,msg1,msg2]
+    
+    let Suma = sum(a,b)[0];
+    let Suma1 = sum(Suma,c)[0];
+    let product = multiply(a,b)[0];
+    let product1 = multiply(product,c)[0];
+    const msg1 = `${a} and ${b} and ${c} sum to ${Suma1}.`;
+    const msg2 = `The product of ${a} and ${b} and ${c} is ${product1}.` 
+    return[Suma1,product1,msg1,msg2]
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -80,10 +83,9 @@ let testArray = [2, 3, 4,]; //eslint-disable-line
 function sumArray(sumArr) { //eslint-disable-line
     let Suma = 0
     for (let i = 0; i < sumArr.length; i++) {
-        const resultado = sum(Suma,sumArr[i]);
-        Suma = resultado[0]
+        Suma = sum(Suma,sumArr[i])[0];
     }
-    let msgAr = sumArr[0]+","+sumArr[1]+","+sumArr[2] + " was passed in as an array of numbers, and "+ Suma +" is their sum.";
+    let msgAr = `${sumArr[0]},${+sumArr[1]},${sumArr[2]} was passed in as an array of numbers, and ${Suma} is their sum.`;
     return[Suma,msgAr]
 }
 // Here is the test for sumArray(); uncomment it to run it
@@ -106,8 +108,7 @@ Test this function by hand in the console to get it working, and when you think 
 function multiplyArray(multArr) { //eslint-disable-line
     let Producto = 1
     for (let i = 0; i < multArr.length; i++) {
-        const resultado = multiply(Producto,multArr[i]);
-        Producto = resultado[0]
+        Producto = multiply(Producto,multArr[i])[0];
     }
     let msgAr = "The numbers "+ multArr[0]+","+multArr[1]+","+multArr[2] + " have a product of "+ Producto +".";
     return[Producto,msgAr]
@@ -138,10 +139,20 @@ Test this function by hand in the console to get it working, and when you think 
 let testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) { //eslint-disable-line
-
+    let Producto1 = 1
+    let comas = ""
+    for (let i = 0; i < dynamicArray.length; i++) {
+        Producto1 = multiply(Producto1,dynamicArray[i])[0];
+        comas = comas + dynamicArray[i];
+        if (i < dynamicArray.length - 1){
+            comas += ","
+        }
+    }
+    let msgAr = `The numbers ${comas} have a product of ${Producto1}.`
+    return[Producto1,msgAr]
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyAnyArray(testDynamicArray);
+testMultiplyAnyArray(testDynamicArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
